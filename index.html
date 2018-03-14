@@ -15,7 +15,28 @@
     <!-- other styles -->
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
-<body>
+<body class="container-fluid">
+    <header class="row">
+        <div class="col-sm-4"></div>
+        <h1 class="col-sm-4 text-center">Trivia Game</h1>
+    </header>
+    <main class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <div class="row">
+                <h2 id="question" class="col-sm-12 text-center"></h2>
+            </div>
+            <div class="row">
+                <h3 id="timer" class="col-sm-12 text-center"></h3>
+            </div>
+            <div class="row">
+                <div id="answers" class="col-sm-12 text-center"></div>
+            </div>
+        </div>
+    </main>
+    <footer class="row">
+        <div id="status" class="col-sm-12 text-center"></div>
+    </footer>
 
     <!-- jQuery Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
