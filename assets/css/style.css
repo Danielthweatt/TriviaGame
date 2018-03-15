@@ -35,12 +35,17 @@ h2 {
     font-size: 20px;
 }
 
-.results {
-    font-size: 16px;
-}
-
 .possible-answer:hover {
     font-weight: bold;
+    cursor: pointer;
+}
+
+.img {
+    margin: auto;
+}
+
+.results {
+    font-size: 16px;
 }
 
 @media screen and (min-width: 768px) {

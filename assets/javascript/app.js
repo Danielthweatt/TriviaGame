@@ -9,6 +9,8 @@ const answers = [['Joe', 'Bob', 'Jim', 'Fred'], ['Green', 'Red', 'Yellow', 'Blue
 const correctAnswer = [0, 2, 3];
 const answerComments = ['Your name is Joe.', 'Your favorite color is yellow.', 
 'You do not know what the capitol of Assyria is.'];
+const answerImages = [['You+must+answer+me+these+questions+three+ere+the+other+_a06eb052a254c1588cca96a36d8c8a37.jpg', 'Creepy bridge guy.'], 
+['download.jpg', 'Creepy bridge guy.'], ['download(1).jpg', 'Creepy bridge guy.']];
 let questionAndAnswerIndex = 0;
 let answered;
 let seconds;
@@ -67,17 +69,20 @@ const checkAnswer = function() {
         $('#timer-location').text('Out of Time!');
     };
     $('#question').text(answerComments[questionAndAnswerIndex]);
+    $('#answer1').append(`<img src="./assets/images/${answerImages[questionAndAnswerIndex][0]}" alt="${answerImages[questionAndAnswerIndex][1]}" class="img-responsive img">`);
     questionAndAnswerIndex += 1;
     if (questionAndAnswerIndex < 3) {
         setTimeout(function() {
             $('#timer-location').empty();
             $('#question').empty();
+            $('#answer1').empty();
             nextQuestion();
         }, 5000);
     } else {
         setTimeout(function() {
             $('#timer-location').empty();
             $('#question').empty();
+            $('#answer1').empty();
             endGame();
         }, 5000); 
     };
