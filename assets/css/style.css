@@ -19,10 +19,52 @@ body {
     margin-top: 35px;
 }
 
+h2 {
+    font-size: 25px;
+}
+
 #timer-location {
     margin-top: 0;
 }
 
+#question {
+    margin-top: 0;
+}
+
+.possible-answer {
+    font-size: 20px;
+}
+
+.results {
+    font-size: 16px;
+}
+
 .possible-answer:hover {
     font-weight: bold;
+}
+
+@media screen and (min-width: 768px) {
+
+    /* Main Styles */
+
+    h1 {
+        font-size: 50px;
+    }
+
+    #start, #restart {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 40px;
+    }
+
+    .possible-answer {
+        font-size: 30px;
+    }
+
+    .results {
+        font-size: 24px;
+    }
+
 }

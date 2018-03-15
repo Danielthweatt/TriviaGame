@@ -87,9 +87,9 @@ const checkAnswer = function() {
 const endGame = function() {
     $('#timer-location').text('Game Over!');
     $('#question').text('Here is how you did:');
-    $('#answer1').text(`Correct Answers: ${correctAnswers}`);
-    $('#answer2').text(`Incorrect Answers: ${incorrectAnswers}`);
-    $('#answer3').text(`Unanswered Questions: ${unanswered}`);
+    $('#answer1').append(`<p class="results">Correct Answers: ${correctAnswers}</p>`);
+    $('#answer2').append(`<p class="results">Incorrect Answers: ${incorrectAnswers}</p>`);
+    $('#answer3').append(`<p class="results">Unanswered Questions: ${unanswered}</p>`);
     $('#restart-button').append('<button id="restart" class="btn btn-default">Play Again?</button>');
     $('#restart').click(function() {
         $('#timer-location').empty();
