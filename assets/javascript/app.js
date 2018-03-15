@@ -39,9 +39,9 @@ const timer = function() {
 //write question function
 const nextQuestion = function() {
     $('#question').text(questions[questionAndAnswerIndex]);
-    $('#timerLocation').append('Seconds Remaining: <span id="timer">30</span>');
+    $('#timer-location').append('Seconds Remaining: <span id="timer">30</span>');
     for (let i = 0; i < 4; i++) {
-        $(`#answer${i + 1}`).append(answers[questionAndAnswerIndex][i]);
+        $(`#answer${i + 1}`).append(`<p class="possible-answer">${answers[questionAndAnswerIndex][i]}</p>`);
     };
     answer = '';
     answered = false;
@@ -51,54 +51,53 @@ const nextQuestion = function() {
 
 //record and respond to answer function
 const checkAnswer = function() {
-    $('#timerLocation').empty();
+    $('#timer-location').empty();
     $('#question').empty();
     for (let i = 0; i < 4; i++) {
         $(`#answer${i + 1}`).empty();
     };    
     if (answer === correctAnswer[questionAndAnswerIndex]) {
         correctAnswers += 1;
-        $('#timerLocation').text('Correct!');
+        $('#timer-location').text('Correct!');
     } else if (answer !== '') {
         incorrectAnswers += 1;
-        $('#timerLocation').text('Incorrect!');
+        $('#timer-location').text('Incorrect!');
     } else {
         unanswered += 1;
-        $('#timerLocation').text('Out of Time!');
+        $('#timer-location').text('Out of Time!');
     };
     $('#question').text(answerComments[questionAndAnswerIndex]);
     questionAndAnswerIndex += 1;
     if (questionAndAnswerIndex < 3) {
         setTimeout(function() {
-            $('#timerLocation').empty();
+            $('#timer-location').empty();
             $('#question').empty();
             nextQuestion();
         }, 5000);
     } else {
         setTimeout(function() {
-            $('#timerLocation').empty();
+            $('#timer-location').empty();
             $('#question').empty();
             endGame();
         }, 5000); 
     };
 };
 
-
 //game over function
 const endGame = function() {
-    $('#timerLocation').text('Game Over!');
+    $('#timer-location').text('Game Over!');
     $('#question').text('Here is how you did:');
     $('#answer1').text(`Correct Answers: ${correctAnswers}`);
     $('#answer2').text(`Incorrect Answers: ${incorrectAnswers}`);
     $('#answer3').text(`Unanswered Questions: ${unanswered}`);
-    $('#restartButton').append('<button id="restart" class="btn btn-default">Play Again?</button>');
+    $('#restart-button').append('<button id="restart" class="btn btn-default">Play Again?</button>');
     $('#restart').click(function() {
-        $('#timerLocation').empty();
+        $('#timer-location').empty();
         $('#question').empty();
         for (let i = 0; i < 3; i++) {
             $(`#answer${i + 1}`).empty();
         };
-        $('#restartButton').empty();
+        $('#restart-button').empty();
         questionAndAnswerIndex = 0;
         correctAnswers = 0;
         incorrectAnswers = 0;
@@ -107,10 +106,10 @@ const endGame = function() {
     }); 
 };
 
-
 //function calls
 $('#start').click(function() {
-    $('#startButton').empty();
+    $('#start-button').empty();
+    $('#main-section').addClass("question-container");
     nextQuestion();    
 });
 

@@ -1,0 +1,28 @@
+/* Global Styles */
+
+body {
+    /* Background Image from Subtle Patterns */
+    background-image: url(../images/vintage-concrete.png);
+    font-family: 'Permanent Marker', cursive;
+}
+
+/* Main Styles */
+
+.question-container {
+    border: 1px solid black;
+    background-color: white;
+    padding: 20px 0;
+    margin: 15px 0;
+}
+
+#start {
+    margin-top: 35px;
+}
+
+#timer-location {
+    margin-top: 0;
+}
+
+.possible-answer:hover {
+    font-weight: bold;
+}
