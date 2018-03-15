@@ -13,6 +13,9 @@ let questionAndAnswerIndex = 0;
 let answered;
 let seconds;
 let answer;
+let correctAnswers = 0;
+let incorrectAnswers = 0;
+let unanswered = 0;
 
 //functions
 
@@ -48,34 +51,61 @@ const nextQuestion = function() {
 
 //record and respond to answer function
 const checkAnswer = function() {
-    $('#question').empty();
     $('#timerLocation').empty();
+    $('#question').empty();
     for (let i = 0; i < 4; i++) {
         $(`#answer${i + 1}`).empty();
     };    
     if (answer === correctAnswer[questionAndAnswerIndex]) {
+        correctAnswers += 1;
         $('#timerLocation').text('Correct!');
     } else if (answer !== '') {
+        incorrectAnswers += 1;
         $('#timerLocation').text('Incorrect!');
     } else {
+        unanswered += 1;
         $('#timerLocation').text('Out of Time!');
     };
     $('#question').text(answerComments[questionAndAnswerIndex]);
+    questionAndAnswerIndex += 1;
     if (questionAndAnswerIndex < 3) {
         setTimeout(function() {
-            $('#question').empty();
             $('#timerLocation').empty();
-            questionAndAnswerIndex += 1;
+            $('#question').empty();
             nextQuestion();
         }, 5000);
     } else {
-        reset();
+        setTimeout(function() {
+            $('#timerLocation').empty();
+            $('#question').empty();
+            endGame();
+        }, 5000); 
     };
 };
 
 
-//reset function
-
+//game over function
+const endGame = function() {
+    $('#timerLocation').text('Game Over!');
+    $('#question').text('Here is how you did:');
+    $('#answer1').text(`Correct Answers: ${correctAnswers}`);
+    $('#answer2').text(`Incorrect Answers: ${incorrectAnswers}`);
+    $('#answer3').text(`Unanswered Questions: ${unanswered}`);
+    $('#restartButton').append('<button id="restart" class="btn btn-default">Play Again?</button>');
+    $('#restart').click(function() {
+        $('#timerLocation').empty();
+        $('#question').empty();
+        for (let i = 0; i < 3; i++) {
+            $(`#answer${i + 1}`).empty();
+        };
+        $('#restartButton').empty();
+        questionAndAnswerIndex = 0;
+        correctAnswers = 0;
+        incorrectAnswers = 0;
+        unanswered = 0;
+        nextQuestion();
+    }); 
+};
 
 
 //function calls
