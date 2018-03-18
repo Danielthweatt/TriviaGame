@@ -13,6 +13,7 @@ const answerImages = [['You+must+answer+me+these+questions+three+ere+the+other+_
 ['download.jpg', 'Creepy bridge guy.'], ['download(1).jpg', 'Creepy bridge guy.']];
 let questionAndAnswerIndex = 0;
 let answered;
+let timer;
 let seconds;
 let answer;
 let correctAnswers = 0;
@@ -22,20 +23,15 @@ let unanswered = 0;
 //functions
 
 //timer function
-const timer = function() {
-    if (!answered && seconds >= 0) {
-        setTimeout(function(){
+const startTimerFunction = function() {
+    timer = setInterval(function() {
+        if (!answered && seconds >= 0) {
             $('#timer').text(seconds);
-            seconds -= 1;
-            timer();
-        }, 1000);
-    } else if (seconds < 0) {
-        setTimeout(function() {
+            seconds -= 1;    
+        } else {
             checkAnswer();
-        }, 1000);  
-    } else {
-        checkAnswer();
-    };
+        };
+    }, 1000);
 };
 
 //write question function
@@ -48,11 +44,12 @@ const nextQuestion = function() {
     answer = '';
     answered = false;
     seconds = 29;
-    timer();
+    startTimerFunction();
 };
 
 //record and respond to answer function
 const checkAnswer = function() {
+    clearInterval(timer);
     $('#timer-location').empty();
     $('#question').empty();
     for (let i = 0; i < 4; i++) {
