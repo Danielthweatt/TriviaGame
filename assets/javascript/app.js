@@ -50,8 +50,6 @@ const nextQuestion = function() {
 //record and respond to answer function
 const checkAnswer = function() {
     clearInterval(timer);
-    $('#timer-location').empty();
-    $('#question').empty();
     for (let i = 0; i < 4; i++) {
         $(`#answer${i + 1}`).empty();
     };    
@@ -71,14 +69,11 @@ const checkAnswer = function() {
     if (questionAndAnswerIndex < 3) {
         setTimeout(function() {
             $('#timer-location').empty();
-            $('#question').empty();
             $('#answer1').empty();
             nextQuestion();
         }, 5000);
     } else {
         setTimeout(function() {
-            $('#timer-location').empty();
-            $('#question').empty();
             $('#answer1').empty();
             endGame();
         }, 5000); 
@@ -95,7 +90,6 @@ const endGame = function() {
     $('#restart-button').append('<button id="restart" class="btn btn-default">Play Again?</button>');
     $('#restart').click(function() {
         $('#timer-location').empty();
-        $('#question').empty();
         for (let i = 0; i < 3; i++) {
             $(`#answer${i + 1}`).empty();
         };
