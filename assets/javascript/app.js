@@ -2,15 +2,21 @@
 
 //variables
 
-const questions = ['What is your name?', 'What is your favorite color?', 
-'What is the capitol of Assyria?'];
-const answers = [['Joe', 'Bob', 'Jim', 'Fred'], ['Green', 'Red', 'Yellow', 'Blue'], 
-['Paris', 'London', 'New York', 'I do not know.']];
-const correctAnswer = [0, 2, 3];
-const answerComments = ['Your name is Joe.', 'Your favorite color is yellow.', 
-'You do not know what the capitol of Assyria is.'];
-const answerImages = [['You+must+answer+me+these+questions+three+ere+the+other+_a06eb052a254c1588cca96a36d8c8a37.jpg', 'Creepy bridge guy.'], 
-['download.jpg', 'Creepy bridge guy.'], ['download(1).jpg', 'Creepy bridge guy.']];
+const questions = ['What studio created Godzilla?', 'What year did Godzilla first appear in film?', 
+'What previous movie monster inspired Godzilla\'s design?', 'Which monster did Godzilla first fight in film?', 
+'What ability does Godzilla most frequently use in combat?'];
+const answers = [['Toho', 'Walt Disney Pictures', 'Universal Pictures', '20th Century Fox'], 
+['1953', '1954', '1998', '2014'], ['King Kong', 'Gill-Man', 'Frankenstein\'s Monster', 'Rhedosaurus'], 
+['Mothra', 'King Ghidorah', 'Anguirus', 'King Kong'], 
+['Nuclear Pulse', 'Atomic Ray', 'Magnetic Field Generation', 'Flight']];
+const correctAnswer = [0, 1, 3, 2, 1];
+const answerComments = ['Toho Co., Ltd., a Japanese film and theater production and distribution company, created Godzilla.', 
+'Godzilla first appeared in film in 1954.', 
+'Godzilla\'s design was inspired, at least in part, by the Rhedosaurus, the beast from 20,000 fathoms!', 
+'Anguirus was Godzilla\'s first film foe!', 
+'Although Godzilla has shown the ability to do all of these things, he uses his atomic ray most frequently.'];
+const answerImages = [['Toho.jpg', 'Toho'], ['Godzilla1954.jpg', 'Godzilla 1954'], ['Rhedosaurus.jpg', 'Rhedosaurus'], 
+['Anguirus.jpg', 'Anguirus'], ['GodzillaAtomicBreath.jpg', 'Godzilla\'s Atomic Breath']];
 let questionAndAnswerIndex = 0;
 let answered;
 let timer;
@@ -66,17 +72,17 @@ const checkAnswer = function() {
     $('#question').text(answerComments[questionAndAnswerIndex]);
     $('#answer1').append(`<img src="./assets/images/${answerImages[questionAndAnswerIndex][0]}" alt="${answerImages[questionAndAnswerIndex][1]}" class="img-responsive img">`);
     questionAndAnswerIndex += 1;
-    if (questionAndAnswerIndex < 3) {
+    if (questionAndAnswerIndex < questions.length) {
         setTimeout(function() {
             $('#timer-location').empty();
             $('#answer1').empty();
             nextQuestion();
-        }, 5000);
+        }, 8000);
     } else {
         setTimeout(function() {
             $('#answer1').empty();
             endGame();
-        }, 5000); 
+        }, 8000); 
     };
 };
 
